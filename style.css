@@ -1,0 +1,44 @@
+/*
+ Theme Name:   AI4 GP Child
+ Theme URI:    https://generatepress.com
+ Description:  Default Generate Press child
+ Author:       Tom Usborne
+ Author URI:   https://tomusborne.com
+ Template:     generatepress
+ Version:      0.1
+*/
+/* Assign color variables */
+:root {
+	--navy: #22144f; 
+	--navy-dark: #160d36; 
+	--navy-mid: #2e1c6a; 
+	--gold: #f3b71b; 
+	--gold-dark: #d49a0e; 
+	--gold-light: #fac93e; 
+	--gray-dark: #333333; 
+	--gray-mid: #666666; 
+	--gray-light: #f5f5f7; 
+	--white: #ffffff; 
+	--border: #e0e0e0; 
+}
+/* test border */
+// * {border: 2px solid red};
+/* Hide page title */
+.entry-header {
+	display: none;
+}
+p {
+	margin-bottom: 0;
+}
+/* Style menu addon */
+.menu-addon-office-hours {
+	background-color: var(--gold,gold);
+}
+.main-navigation .menu-addon-office-hours > a {
+	font-weight: 500;
+	padding-left: 10px !important;
+}-lelfl
+/* Gutenberg color palette */
+.has-blue-color {
+	color: #4066c8;
+}
