@@ -1,0 +1,15 @@
+<?php
+/* Adds page name to classes for page */
+/* Modified is_single to is_singular, which targets both single archive and pages */
+/* Commented out echo statement, as it was showing up on the page output */
+add_filter('body_class','page_class');
+function page_class($classes) {
+   global $wp_query;
+   $page = '';
+   $page = $wp_query->query_vars['pagename'];
+   // add 'pagename' to the $classes array
+   $classes[] = $page;
+   // return the $classes array
+   return $classes;
+}
+?>
