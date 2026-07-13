@@ -21,9 +21,9 @@
 	--white: #ffffff; 
 	--border: #e0e0e0; 
 }
-/* test border */
+// test border
 // * {border: 2px solid red};
-/* Hide page title */
+// Hide page title 
 .entry-header {
 	display: none;
 }
@@ -37,8 +37,73 @@ p {
 .main-navigation .menu-addon-office-hours > a {
 	font-weight: 500;
 	padding-left: 10px !important;
-}-lelfl
-/* Gutenberg color palette */
-.has-blue-color {
-	color: #4066c8;
 }
+
+/* Page colors */
+.services, .blog, #services {
+	background-color: white;
+}
+.policy-tool {
+	background-color: var(--navy-dark,navy);
+}
+.office-hours, .contact, .why-ai, #why-ai {
+	background-color: var(--gray-light,gray);
+}
+.icon-people svg {
+	fill: var(--gold,gold);
+	height: 50px;
+	width: 50px;
+}
+.icon-training svg {
+	fill: var(--navy-dark,navy);
+	height:50px;
+	width: 50px;
+}
+.icon-tablet svg {
+	fill: var(--gold,gold);
+	height: 30px;
+	width: 30px;
+}
+/* Reformat for mobile, from virada-japan.com/create-responsive-tables-wordpress */
+table,
+th,
+td {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+table {
+  border-collapse: separate;
+  border-spacing: 0;
+  border-width: 1px 0 0 1px;
+  width: 100%;
+}
+table tr:nth-child(odd) {
+    background-color: #f2f2f2;
+}
+/* Mobile CSS --------------------------------------------------------------------- */
+@media (max-width: 768px) {
+  table thead {
+    display: none;
+  }
+  table tbody tr {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  table tbody td {
+    display: flex;
+    flex-direction: column;
+    font-weight: 400;
+    padding: 0.6rem;
+  }
+  table tbody td::before {
+    content: attr(data-th);
+    font-weight: 300;
+    font-size: small;
+	border-width: 0;
+    display: inline-block;
+    width: 6rem;
+  }
+  table, th, td {
+	  border: 0;
+  }
+}
+*/
