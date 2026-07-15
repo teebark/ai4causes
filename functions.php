@@ -97,4 +97,26 @@ add_filter( 'generateblocks_query_loop_args', function( $query_args, $attributes
 
     return $query_args;
 }, 10, 2 );
+// Add columns to admin
+add_filter('manage_ai4-events_posts_columns', 'my_custom_columns');
+function my_custom_columns($columns) {
+//    $columns['ai4-date'] = __('AI4 Date'),
+	$columns = array (
+	  'cb' => $columns['cb'],
+	  'title' => $columns['Title'],
+	  'ai4-date' => __('AI4 Date'),
+    );
+    return $columns;
+}
+add_action('manage_ai4-events_posts_custom_column', 'my_custom_column_content', 10, 2);
+function my_custom_column_content($column, $post_id) {
+    if ($column === 'ai4-date') {
+        echo get_post_meta($post_id,'ai4-date', true);
+    }
+}
+add_filter('manage_ai4-events_sortable_columns', 'my_sortable_columns');
+function my_sortable_columns($columns) {
+    $columns['ai4-date'] = 'AI4 Date';
+    return $columns;
+}
 ?>
