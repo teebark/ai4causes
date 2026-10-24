@@ -35,22 +35,6 @@ function render_custom_cpt_columns( $column, $post_id ) {
         echo ! empty( $value ) ? esc_html( $value ) : '—';
     }
 }
-// Date sort
-//DATE type custom field value
-add_filter( 'generateblocks_query_loop_args', function( $query_args, $attributes ) {
-
-    // apply filter if loop has class: order-by-date
-    if ( ! is_admin() && ! empty( $attributes['className'] ) && strpos( $attributes['className'], 'order-by-date' ) !== false ) {
-       
-        $query_args = array_merge( $query_args, array(
-            'meta_key' => 'ai4-date',
-            'meta_type' => 'DATE',
-            'orderby' => 'meta_value',
-            'order' => 'ASC',
-        ));
-    }
-    return $query_args;
-}, 10, 2 );
 // Sort and only show current and future dates
 add_filter( 'generateblocks_query_loop_args', function( $query_args, $attributes ) {
     $meta_key = 'ai4-date';
@@ -80,7 +64,7 @@ add_filter( 'generateblocks_query_loop_args', function( $query_args, $attributes
     }
     // GESPEELD: < vandaag (alleen gepubliceerd)
     elseif ( strpos( $class_name, 'order-by-date' ) !== false ) {
-        $query_args['post_type'] = 'concert';
+        $query_args['post_type'] = 'ai4-events';
         $query_args['post_status'] = 'publish';  // ← DIT!
         $query_args['meta_key'] = $meta_key;
         $query_args['orderby'] = 'meta_value';
@@ -97,13 +81,31 @@ add_filter( 'generateblocks_query_loop_args', function( $query_args, $attributes
 
     return $query_args;
 }, 10, 2 );
+// Format date
+add_filter( 'generateblocks_dynamic_tag_output', function( $output, $options ) {
+    if ( empty( $options['customdateformat'] ) ) {
+        return $output;
+    }
+
+    $date_value = get_field('ai4-date'); // Replace with your actual ACF date field name
+
+    if ( $date_value ) {
+        // Since the date is returned as "Y/m/d", adjust the createFromFormat accordingly.
+        $formatted_date = DateTime::createFromFormat('Y/m/d', $date_value);
+        if ( $formatted_date ) {
+            $output = $formatted_date->format('n/j/Y'); // Example: "22. February 2025"
+        }
+    }
+
+    return $output;
+}, 10, 2 );
 // Add columns to admin
 add_filter('manage_ai4-events_posts_columns', 'my_custom_columns');
 function my_custom_columns($columns) {
 //    $columns['ai4-date'] = __('AI4 Date'),
 	$columns = array (
 	  'cb' => $columns['cb'],
-	  'title' => $columns['Title'],
+	  'title' => __('Title'),
 	  'ai4-date' => __('AI4 Date'),
     );
     return $columns;

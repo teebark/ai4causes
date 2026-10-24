@@ -33,13 +33,18 @@ p {
 /* Style menu addon */
 .menu-addon-office-hours {
 	background-color: var(--gold,gold);
+	border-radius: 6px;
 }
 .main-navigation .menu-addon-office-hours > a {
 	font-weight: 500;
+	font-size: .8rem;
 	padding-left: 10px !important;
 }
-
-/* Page colors */
+/* Make this menu item bold */
+.menu-item a {
+	font-weight: 600;
+}
+/* Page background colors */
 .services, .blog, #services {
 	background-color: white;
 }
@@ -49,6 +54,17 @@ p {
 .office-hours, .contact, .why-ai, #why-ai {
 	background-color: var(--gray-light,gray);
 }
+/* Contact form round corners */
+.ai-request .wpforms-form textarea, .ai-request .wpforms-field-text input,
+.ai-request .wpforms-field-name-first, .ai-request .wpforms-field-name-last,
+.ai-request .wpforms-field-medium { 
+	border-radius: 6px !important;
+}
+/* Contact form button color */
+button.ai-request {
+	background-color: var(--gold,gold) !important;
+	border-radius: 6px !important;
+}	
 .icon-people svg {
 	fill: var(--gold,gold);
 	height: 50px;
@@ -64,6 +80,10 @@ p {
 	height: 30px;
 	width: 30px;
 }
+/* Rotate the lock icon on the policy page */
+.lock-icon .gb-shape svg {
+	transform: rotate(270deg);
+)
 /* Reformat for mobile, from virada-japan.com/create-responsive-tables-wordpress */
 table,
 th,
